@@ -1,0 +1,80 @@
+/**
+ * threesw.css - Estilos para el switch de 3 estados
+ * Versión: 1.0.0
+ * Autor: Aristides López de León <dracodig@gmail.com>
+ * Licencia: MIT
+ *
+ * Puedes usar, modificar y redistribuir este archivo libremente bajo los términos de la licencia MIT.
+ * Este código se proporciona tal cual, sin garantías.
+ */
+
+
+.threesw {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+    height: 20px;
+    background-color: #dee2e6;
+    border-radius: 25px;
+    padding: 5px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+}
+
+.threesw.state-0 { background-color: #dc3545; }
+.threesw.state-2 { background-color: #28a745; }
+
+.threesw.state-0 .threesw-option[data-state="1"],
+.threesw.state-0 .threesw-option[data-state="2"],
+.threesw.state-2 .threesw-option[data-state="0"],
+.threesw.state-2 .threesw-option[data-state="1"] {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.threesw-option {
+    position: absolute;
+    flex: 1;
+    text-align: center;
+    font-size: 24px;
+    z-index: 2;
+    cursor: pointer;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    top: -10px;
+}
+
+.threesw-option[data-state="0"] { left: 1px; }
+.threesw-option[data-state="1"] { height: 30px; width: 30px; left: 35px; }
+.threesw-option[data-state="2"] { right: 1px; }
+
+.threesw-option.active i {
+    color: white !important;
+}
+
+.threesw-bg {
+    position: absolute;
+    top: -7px;
+    left: 34px;
+    width: 32px;
+    height: 32px;
+    background-color: #6c757d;
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.threesw.state-0 .threesw-bg {
+    left: -3px;
+    background-color: #dc3545;
+}
+
+.threesw.state-1 .threesw-bg {
+    left: 34px;
+    background-color: #6c757d;
+}
+
+.threesw.state-2 .threesw-bg {
+    left: 71px;
+    background-color: #28a745;
+}
